@@ -24,7 +24,15 @@ Select the folder "/Azure Function/sample1/" where to place the new Azure Functi
 
 ![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/8444ab5b-5fe2-44ce-a9d9-d21be3952c4f)
 
-Select the Azure Function language, in this case we select C#
+Select the Azure Function language, in this case we select C#:
 
 ![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/4e92a5b4-b601-4aca-9ed2-2f9aa7d60fad)
+
+Select the Azure Function runtime libraries, we select .NET 8:
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/46065dc3-a58e-4044-86a4-70324271e85b)
+
+The we select the Azure Function trigger, we select HTTP triggered
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/89636e89-362c-4af6-a661-9212572d2fc0)
 
