@@ -89,3 +89,81 @@ using Azure.ResourceManager;
 using Azure;
 ...
 ```
+
+## 4. We input the C# source code for creating the Azure Resource Group with Azure SDK for .NET
+
+This is the code for creating the new Azure Resource Group:
+
+```csharp
+ArmClient armClient = new ArmClient(new DefaultAzureCredential());
+SubscriptionResource subscription = await armClient.GetDefaultSubscriptionAsync();
+string rgName = "myNewRgName";
+AzureLocation location = AzureLocation.WestEurope;
+ArmOperation<ResourceGroupResource> operation = await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, rgName, new ResourceGroupData(location));
+ResourceGroupResource resourceGroup = operation.Value;
+Console.WriteLine(resourceGroup.Data.Name);
+```
+
+This code is written in C# and uses the Azure SDK for .NET to interact with Azure Resource Manager (ARM). Let me break it down for you:
+
+### 4.1. ArmClient Initialization:
+```csharp
+ArmClient armClient = new ArmClient(new DefaultAzureCredential());
+```
+
+Here, an instance of ArmClient is created using the DefaultAzureCredential().
+
+**DefaultAzureCredential** is part of the Azure Identity library and is used for automatically managing Azure Active Directory (AAD) authentication.
+
+It tries to use various methods for authentication, such as environment variables, managed identity, or interactive login.
+
+### 4.2. Get Default Subscription:
+
+```csharp
+SubscriptionResource subscription = await armClient.GetDefaultSubscriptionAsync();
+```
+
+It retrieves the default subscription for the authenticated user. 
+
+The await keyword indicates that this operation is asynchronous.
+
+### 4.3. Resource Group Information:
+
+```csharp
+string rgName = "myRgNameLCESEGUNDO";
+AzureLocation location = AzureLocation.WestEurope;
+```
+
+Sets the **name** and **location** of the Azure Resource Group that you want to create or update.
+
+### 4.4. Create or Update Resource Group:
+
+```csharp
+ArmOperation<ResourceGroupResource> operation = await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, rgName, new ResourceGroupData(location));
+```
+
+Initiates an asynchronous operation to **create or update the specified resource group**. 
+
+It uses the **CreateOrUpdateAsync** method on the ResourceGroups property of the subscription. 
+
+The **WaitUntil.Completed** parameter indicates that the code should wait until the operation is completed.
+
+### 4.5. Get Resource Group Information:
+
+```csharp
+ResourceGroupResource resourceGroup = operation.Value;
+```
+
+Retrieves the result of the asynchronous operation. 
+
+The Value property contains the actual **ResourceGroupResource** object.
+
+### 4.6. Print Resource Group Name:
+
+```csharp
+Console.WriteLine(resourceGroup.Data.Name);
+```
+
+**Prints the resourcegroup name in the console**.
+
+In summary, this code authenticates the user using Azure Identity, gets the default subscription, creates or updates a resource group with a specified name and location, and then prints the name of the resource group to the console.
