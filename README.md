@@ -36,3 +36,29 @@ The we select the Azure Function trigger, we select HTTP triggered
 
 ![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/89636e89-362c-4af6-a661-9212572d2fc0)
 
+Now we provide the Azure Function name:
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/4b813e45-e0a9-4139-8d0b-85d033835abe)
+
+We also set the Azure Function namespace: 
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/7bdf2bbe-127f-4ccd-88fb-5ad412ead70d)
+
+Now we grant the access rights "Function":
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/d4f3ac00-fe36-43aa-a7b0-6222cac5eb57)
+
+Finally, we open in the current window the new Azure Function source code:
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/15858d08-d93f-4f42-9b22-4522df3fe0ca)
+
+For running the function we type the command:
+
+```
+func start
+```
+
+To access the Azure Function endpoint we navigate to this URL: http://localhost:7071/api/HttpTrigger1
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/0eb736c4-1d6e-4f24-bce6-de4ac9f2a7ee)
+
