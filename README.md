@@ -167,3 +167,70 @@ Console.WriteLine(resourceGroup.Data.Name);
 **Prints the resourcegroup name in the console**.
 
 In summary, this code authenticates the user using Azure Identity, gets the default subscription, creates or updates a resource group with a specified name and location, and then prints the name of the resource group to the console.
+
+## 5. This is the whole Azure Function C# source code.
+
+```csharp
+using System.Net;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager;
+using Azure;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public class HttpTrigger1
+    {
+        private readonly ILogger _logger;
+
+        public HttpTrigger1(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger<HttpTrigger1>();
+        }
+
+        [Function("HttpTrigger1")]
+        public async Task<HttpResponseData> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
+        {
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            var response = req.CreateResponse(HttpStatusCode.OK);
+            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+
+            response.WriteString("Welcome to Azure Functions!");
+
+            ArmClient armClient = new ArmClient(new DefaultAzureCredential());
+            SubscriptionResource subscription = await armClient.GetDefaultSubscriptionAsync();
+
+            string rgName = "myNewRgName";
+            AzureLocation location = AzureLocation.WestEurope;
+            ArmOperation<ResourceGroupResource> operation = await subscription.GetResourceGroups().CreateOrUpdateAsync(WaitUntil.Completed, rgName, new ResourceGroupData(location));
+            ResourceGroupResource resourceGroup = operation.Value;
+            Console.WriteLine(resourceGroup.Data.Name);
+
+            return response;
+        }
+    }
+}
+```
+
+**IMPORTANT NOTE**: please pay attention and see the Azure Function call with "**RunAsync**" method. 
+
+We used the "**async**" and the "**Task**" keywords:
+
+```csharp
+[Function("HttpTrigger1")]
+        public async Task<HttpResponseData> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
+```
+
+## 6. For checking we created the new ResourceGroup in Azure
+
+We login in Azure 
+
+We select "Resource Groups" and we check the new resource group named "" was created:
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/8ebf703a-a1f0-4952-98b0-a40a56cf620f)
+
