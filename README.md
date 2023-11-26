@@ -226,11 +226,31 @@ We used the "**async**" and the "**Task**" keywords:
         public async Task<HttpResponseData> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
 ```
 
-## 6. For checking we created the new ResourceGroup in Azure
+## 6. We run the Azure Function
+
+We execute the Azure Function with the command:
+
+```
+func start
+```
+
+See the output after running the Azure Function:
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/0f8f99c0-93d0-4bb8-9343-48e69d5924a2)
+
+Now we navigate to the Azure Function URL then we can check the new Azure Resource Group was created.
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/52dad139-497c-4213-9666-c3c6642dffd5)
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/b6bc71a0-01ef-49ff-b554-8f551b43a7a0)
+
+## 7. For checking we created the new ResourceGroup in Azure
 
 We login in Azure 
 
-We select "Resource Groups" and we check the new resource group named "" was created:
+We select "**Resource Groups**" and we check the new resource group named "" was created:
 
 ![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/8ebf703a-a1f0-4952-98b0-a40a56cf620f)
+
+![image](https://github.com/luiscoco/Azure_SDK_Sample4_Create_AzureResourceGroup_with_AzureFunction/assets/32194879/d821023d-9675-4800-9892-a90376b66d5e)
 
