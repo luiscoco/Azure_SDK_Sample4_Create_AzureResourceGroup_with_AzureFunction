@@ -66,4 +66,26 @@ To access the Azure Function endpoint we navigate to this URL: **http://localhos
 
 Press **Ctrl+C** for stopping the application.
 
+## 3. Load the Azure SDK for .NET libraries
 
+In Visual Studio Code, you can use the terminal to install NuGet packages for your C# application. 
+ 
+The command to install the **Azure SDK libraries** would be. We type these commands in the terminal window in VSCode:
+
+```
+dotnet add package Azure.Identity
+dotnet add package Azure.ResourceManager.Resources
+dotnet add package Azure.ResourceManager
+```
+
+Now we reference the libraries in the C# source code:
+
+```csharp
+...
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.Resources;
+using Azure.ResourceManager;
+using Azure;
+...
+```
