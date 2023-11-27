@@ -1,5 +1,8 @@
 # How to create an Azure ResourceGroup from an  Azure Function (HttpTriggered)
 
+**NOTE:**
+For general info about Azure SDK for .NET navigate to the following github repo: https://github.com/Azure/azure-sdk-for-net
+
 ## 1. Run VSCode and install the extensions
 
 First we have to install "Azure Tools" extension.
